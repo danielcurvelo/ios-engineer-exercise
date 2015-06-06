@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+@class AlarmController;
+@import UIKit;
+
+extern NSString *thresholdNote;
+extern NSString *toggleNote;
+extern NSString *value;
+extern NSString *on;
 
 @interface AlarmController : NSObject
+
++(AlarmController *)sharedInstance;
+
+@property (nonatomic, assign) CGFloat thresholdValue;
+@property (nonatomic, assign) CGFloat sliderValue;
+@property (nonatomic, assign) BOOL toogleValue;
 
 @end
