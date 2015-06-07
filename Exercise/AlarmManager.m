@@ -74,13 +74,6 @@
     self.isAlarmEnabled = [note.userInfo[onKey] boolValue];
     [[NSUserDefaults standardUserDefaults] setBool:self.isAlarmEnabled forKey:switchStatusKey];
 
-    if (self.isAlarmEnabled) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:AlarmDidActivateNotification object:nil];
-    }
-    else
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:AlarmDidDeactivateNotification object:nil];
-    }
 }
 
 #pragma mark -
