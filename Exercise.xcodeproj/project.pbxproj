@@ -18,7 +18,7 @@
 		408484001A9D0B9600C8B0B4 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408483FF1A9D0B9600C8B0B4 /* AlarmViewController.m */; };
 		4084840A1A9D15AB00C8B0B4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408484091A9D15AB00C8B0B4 /* SettingsViewController.m */; };
 		4084840D1A9D15BF00C8B0B4 /* DangerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4084840C1A9D15BF00C8B0B4 /* DangerViewController.m */; };
-		63F67C121B221E1300649C5F /* AlarmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F67C111B221E1300649C5F /* AlarmController.m */; };
+		63F67C121B221E1300649C5F /* AlarmManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F67C111B221E1300649C5F /* AlarmManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +54,8 @@
 		4084840B1A9D15BF00C8B0B4 /* DangerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DangerViewController.h; sourceTree = "<group>"; };
 		4084840C1A9D15BF00C8B0B4 /* DangerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DangerViewController.m; sourceTree = "<group>"; };
 		40FA92251ADDB120000BAC27 /* README.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = SOURCE_ROOT; };
-		63F67C101B221E1300649C5F /* AlarmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmController.h; sourceTree = "<group>"; };
-		63F67C111B221E1300649C5F /* AlarmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmController.m; sourceTree = "<group>"; };
+		63F67C101B221E1300649C5F /* AlarmManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmManager.h; sourceTree = "<group>"; };
+		63F67C111B221E1300649C5F /* AlarmManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +106,8 @@
 		408483CF1A9D060800C8B0B4 /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
-				63F67C131B221E2000649C5F /* ModelController */,
 				40FA92251ADDB120000BAC27 /* README.markdown */,
+				63F67C131B221E2000649C5F /* ModelController */,
 				408483F61A9D061500C8B0B4 /* Application */,
 				408483F71A9D061A00C8B0B4 /* View Controllers */,
 				408483F81A9D07C400C8B0B4 /* Views */,
@@ -212,8 +212,8 @@
 		63F67C131B221E2000649C5F /* ModelController */ = {
 			isa = PBXGroup;
 			children = (
-				63F67C101B221E1300649C5F /* AlarmController.h */,
-				63F67C111B221E1300649C5F /* AlarmController.m */,
+				63F67C101B221E1300649C5F /* AlarmManager.h */,
+				63F67C111B221E1300649C5F /* AlarmManager.m */,
 			);
 			name = ModelController;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 				408483D61A9D060800C8B0B4 /* AppDelegate.m in Sources */,
 				4084840A1A9D15AB00C8B0B4 /* SettingsViewController.m in Sources */,
 				408483FC1A9D07ED00C8B0B4 /* AlarmView.m in Sources */,
-				63F67C121B221E1300649C5F /* AlarmController.m in Sources */,
+				63F67C121B221E1300649C5F /* AlarmManager.m in Sources */,
 				408483D31A9D060800C8B0B4 /* main.m in Sources */,
 				4084840D1A9D15BF00C8B0B4 /* DangerViewController.m in Sources */,
 			);

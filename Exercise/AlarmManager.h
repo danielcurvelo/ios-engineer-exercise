@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class AlarmController;
+@class AlarmManager;
 @import UIKit;
 
 // =============================================================================
@@ -22,9 +22,9 @@ static NSString * const appLaunchesKey;
 static NSString * const switchStatusKey;
 static NSString * const thresholdStatusKey;
 
-@interface AlarmController : NSObject
+@interface AlarmManager : NSObject
 
-+(AlarmController *)sharedInstance;
++(AlarmManager *)sharedInstance;
 
 @property (nonatomic, assign) CGFloat thresholdValue;
 @property (nonatomic, assign) CGFloat sliderValue;

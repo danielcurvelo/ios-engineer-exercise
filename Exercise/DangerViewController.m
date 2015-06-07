@@ -9,7 +9,7 @@
 #import "DangerViewController.h"
 #import "SettingsViewController.h"
 #import "AlarmViewController.h"
-#import "AlarmController.h"
+#import "AlarmManager.h"
 #import "Alarm.h"
 
 @interface DangerViewController()
@@ -46,8 +46,8 @@
 - (void)checkForThresholdLevel:(UISlider *)sender
 {
     // MARK: Checking the state of the alarm before activate/deactivate.
-    if ([AlarmController sharedInstance].isAlarmEnabled) {
-        if (sender.value >= [AlarmController sharedInstance].thresholdValue) {
+    if ([AlarmManager sharedInstance].isAlarmEnabled) {
+        if (sender.value >= [AlarmManager sharedInstance].thresholdValue) {
             if (!isAlarmActive()) {
                 activateAlarm();
             }

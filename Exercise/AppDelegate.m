@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "AlarmController.h"
+#import "AlarmManager.h"
 
 @interface AppDelegate ()
 @end
@@ -17,8 +17,8 @@
 {
     
     // MARK: Tracking Launches
-    int launches = [[AlarmController sharedInstance].launches intValue];
-    [[AlarmController sharedInstance] incrementAppLaunches:launches];
+    int launches = [[AlarmManager sharedInstance].launches intValue];
+    [[AlarmManager sharedInstance] incrementAppLaunches:launches];
     
     return YES;
 }

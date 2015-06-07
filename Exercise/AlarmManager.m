@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Ender Labs. All rights reserved.
 //
 
-#import "AlarmController.h"
+#import "AlarmManager.h"
 #import "Alarm.h"
 
 static NSString * const thresholdNote = @"thresholdNote";
@@ -17,17 +17,17 @@ static NSString * const appLaunchesKey = @"launches";
 static NSString * const switchStatusKey = @"switchStatus";
 static NSString * const thresholdStatusKey = @"thresholdStatus";
 
-@implementation AlarmController
+@implementation AlarmManager
 
 #pragma mark -
 #pragma mark Initializing SharedInstance
 
 +(instancetype)sharedInstance
 {
-    static AlarmController *sharedInstance = nil;
+    static AlarmManager *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [AlarmController new];
+        sharedInstance = [AlarmManager new];
         sharedInstance.sliderValue = 0.5;
         [sharedInstance setDefaultValues];
         [sharedInstance registerNotifications];

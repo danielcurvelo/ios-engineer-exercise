@@ -7,7 +7,7 @@
 //
 
 #import "SettingsViewController.h"
-#import "AlarmController.h"
+#import "AlarmManager.h"
 #import "Alarm.h"
 
 @interface SettingsViewController()
@@ -26,8 +26,8 @@
     
     self.alarmThresholdSlider.minimumValue = 0.0;
     self.alarmThresholdSlider.maximumValue = 1.0;
-    self.alarmThresholdSlider.value = [AlarmController sharedInstance].thresholdValue;
-    self.alarmEnabledSwitch.on = [AlarmController sharedInstance].isAlarmEnabled;
+    self.alarmThresholdSlider.value = [AlarmManager sharedInstance].thresholdValue;
+    self.alarmEnabledSwitch.on = [AlarmManager sharedInstance].isAlarmEnabled;
 }
 
 - (IBAction)done:(id)sender
