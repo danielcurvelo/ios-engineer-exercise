@@ -17,7 +17,7 @@
 {
     
     // MARK: Tracking Launches
-    int launches = [[AlarmManager sharedInstance].launches intValue];
+    NSInteger launches = [AlarmManager sharedInstance].launches;
     [[AlarmManager sharedInstance] incrementAppLaunches:launches];
     
     return YES;

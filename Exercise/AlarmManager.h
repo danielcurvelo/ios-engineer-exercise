@@ -14,13 +14,13 @@
 // This Class is going to handle any modification to the data inside the app.
 // =============================================================================
 
-static NSString * const thresholdNote;
-static NSString * const toggleNote;
-static NSString * const value;
-static NSString * const on;
-static NSString * const appLaunchesKey;
-static NSString * const switchStatusKey;
-static NSString * const thresholdStatusKey;
+static NSString * const thresholdNote = @"thresholdNote";
+static NSString * const toggleNote = @"toggleNote";
+static NSString * const valueKey = @"valueKey";
+static NSString * const onKey = @"onKey";
+static NSString * const appLaunchesKey = @"launches";
+static NSString * const switchStatusKey = @"switchStatus";
+static NSString * const thresholdStatusKey = @"thresholdStatus";
 
 @interface AlarmManager : NSObject
 
@@ -29,8 +29,8 @@ static NSString * const thresholdStatusKey;
 @property (nonatomic, assign) CGFloat thresholdValue;
 @property (nonatomic, assign) CGFloat sliderValue;
 @property (nonatomic, assign) BOOL isAlarmEnabled;
-@property (nonatomic, assign) NSNumber *launches;
+@property (nonatomic, assign) NSInteger launches;
 
--(void)incrementAppLaunches:(int)launch;
+-(void)incrementAppLaunches:(NSInteger)launch;
 
 @end

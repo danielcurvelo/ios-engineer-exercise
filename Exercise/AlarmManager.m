@@ -9,13 +9,7 @@
 #import "AlarmManager.h"
 #import "Alarm.h"
 
-static NSString * const thresholdNote = @"thresholdNote";
-static NSString * const toggleNote = @"toggleNote";
-static NSString * const value = @"value";
-static NSString * const on = @"on";
-static NSString * const appLaunchesKey = @"launches";
-static NSString * const switchStatusKey = @"switchStatus";
-static NSString * const thresholdStatusKey = @"thresholdStatus";
+
 
 @implementation AlarmManager
 
@@ -28,9 +22,8 @@ static NSString * const thresholdStatusKey = @"thresholdStatus";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [AlarmManager new];
-        sharedInstance.sliderValue = 0.5;
-        [sharedInstance setDefaultValues];
         [sharedInstance registerNotifications];
+        [sharedInstance setDefaultValues];
     });
     return sharedInstance;
 }
@@ -38,26 +31,30 @@ static NSString * const thresholdStatusKey = @"thresholdStatus";
 #pragma mark -
 #pragma mark Setting Defaults
 
--(void)incrementAppLaunches:(int)launch
+-(void)incrementAppLaunches:(NSInteger)launch
 {
     // MARK: Keeping track of App Launches.
-    self.launches = [NSNumber numberWithInt:launch + 1];
-    [[NSUserDefaults standardUserDefaults] setObject:self.launches forKey:appLaunchesKey];
+    self.launches++;
+    [[NSUserDefaults standardUserDefaults] setInteger:self.launches forKey:appLaunchesKey];
 }
 
 -(void)setDefaultValues
 {
     // MARK: Using the app launches to know which default values to set.
-    self.launches = [[NSUserDefaults standardUserDefaults] objectForKey:appLaunchesKey];
+    self.sliderValue = 0.5;
+    self.launches = [[NSUserDefaults standardUserDefaults] integerForKey:appLaunchesKey];
     if (self.launches > 0) {
         self.isAlarmEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:switchStatusKey];
-        CGFloat savedThresholdValue = [[[NSUserDefaults standardUserDefaults] objectForKey:thresholdStatusKey] floatValue];
-        self.thresholdValue = savedThresholdValue;
+        self.thresholdValue = [[NSUserDefaults standardUserDefaults] floatForKey:thresholdStatusKey];
+;
     }
     else
     {
+        // This will only get called on the first app launch.
         self.isAlarmEnabled = YES;
+        [[NSUserDefaults standardUserDefaults] setBool:self.isAlarmEnabled forKey:switchStatusKey];
         self.thresholdValue = 0.9;
+        [[NSUserDefaults standardUserDefaults] setFloat:self.thresholdValue forKey:thresholdStatusKey];
     }
 }
 
@@ -67,14 +64,14 @@ static NSString * const thresholdStatusKey = @"thresholdStatus";
 - (void)thresholdValueDidChange:(NSNotification *)note
 {
     // MARK: Changing and saving the threshold value.
-    self.thresholdValue = [note.userInfo[value] floatValue];
-    [[NSUserDefaults standardUserDefaults] setObject:note.userInfo[value] forKey:thresholdStatusKey];
+    self.thresholdValue = [note.userInfo[valueKey] floatValue];
+    [[NSUserDefaults standardUserDefaults] setFloat:self.thresholdValue forKey:thresholdStatusKey];
 }
 
 - (void)toggleValueDidChange:(NSNotification *)note
 {
     // MARK: Changing and saving the Switch valuee.
-    self.isAlarmEnabled = [note.userInfo[on] boolValue];
+    self.isAlarmEnabled = [note.userInfo[onKey] boolValue];
     [[NSUserDefaults standardUserDefaults] setBool:self.isAlarmEnabled forKey:switchStatusKey];
 
     if (self.isAlarmEnabled) {
