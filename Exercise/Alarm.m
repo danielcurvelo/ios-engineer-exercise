@@ -40,3 +40,4 @@ void deactivateAlarm() {
 BOOL isAlarmActive() {
     return alarmActive;
 }
+
