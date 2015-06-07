@@ -10,10 +10,17 @@
 @class AlarmController;
 @import UIKit;
 
-extern NSString *thresholdNote;
-extern NSString *toggleNote;
-extern NSString *value;
-extern NSString *on;
+// =============================================================================
+// This Class is going to handle any modification to the data inside the app.
+// =============================================================================
+
+static NSString * const thresholdNote;
+static NSString * const toggleNote;
+static NSString * const value;
+static NSString * const on;
+static NSString * const appLaunchesKey;
+static NSString * const switchStatusKey;
+static NSString * const thresholdStatusKey;
 
 @interface AlarmController : NSObject
 
@@ -21,6 +28,9 @@ extern NSString *on;
 
 @property (nonatomic, assign) CGFloat thresholdValue;
 @property (nonatomic, assign) CGFloat sliderValue;
-@property (nonatomic, assign) BOOL toogleValue;
+@property (nonatomic, assign) BOOL isAlarmEnabled;
+@property (nonatomic, assign) NSNumber *launches;
+
+-(void)incrementAppLaunches:(int)launch;
 
 @end
