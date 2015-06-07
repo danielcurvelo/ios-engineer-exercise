@@ -24,33 +24,47 @@
 
 -(void)viewDidLoad
 {
-    
+    // MARK: Setting dangerSlider's minimum/maximum values.
+    [super viewDidLoad];
     self.dangerSlider.minimumValue = 0.0;
     self.dangerSlider.maximumValue = 1.0;
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    // MARK: Checking for threshold level.
+    [super viewWillAppear:animated];
+    [self checkForThresholdLevel:self.dangerSlider];
 }
 
 - (IBAction)dangerSliderValueChanged:(UISlider *)sender
 {
-    
-    NSLog(@"Slider Value: %f comparing to Threshold: %f",sender.value, [AlarmController sharedInstance].thresholdValue);
-    
     // TODO: Change the danger value.
-    if (sender.value >= [AlarmController sharedInstance].thresholdValue) {
-        NSLog(@"You're in Danger!");
-        [[NSNotificationCenter defaultCenter] postNotificationName:AlarmDidActivateNotification object:nil];
-        if (!isAlarmActive()) {
-            activateAlarm();
+    [self checkForThresholdLevel:sender];
+}
+
+- (void)checkForThresholdLevel:(UISlider *)sender
+{
+    // MARK: Checking the state of the alarm before activate/deactivate.
+    if ([AlarmController sharedInstance].isAlarmEnabled) {
+        if (sender.value >= [AlarmController sharedInstance].thresholdValue) {
+            if (!isAlarmActive()) {
+                activateAlarm();
+            }
+        }
+        else
+        {
+            if (isAlarmActive()) {
+                deactivateAlarm();
+            }
         }
     }
     else
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:AlarmDidDeactivateNotification object:nil];
         if (isAlarmActive()) {
             deactivateAlarm();
         }
     }
-    
 }
 
 
