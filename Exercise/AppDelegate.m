@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AlarmController.h"
 
 @interface AppDelegate ()
 @end
@@ -14,6 +15,11 @@
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    // MARK: Tracking Launches
+    int launches = [[AlarmController sharedInstance].launches intValue];
+    [[AlarmController sharedInstance] incrementAppLaunches:launches];
+    
     return YES;
 }
 
